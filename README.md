@@ -2,11 +2,11 @@
 
 ## 📊 Project Overview
 
-As part of my journey to strengthen my data analysis skills, I worked on this end-to-end project to explore how SQL and Power BI can be used together to derive meaningful business insights. I chose a simulated dataset representing a computer hardware company navigating a competitive and evolving market.
+To boost my data analysis skills, I took on an end-to-end project where I explored the synergy between SQL and Power BI to uncover meaningful business insights. I selected a simulated dataset that reflects a computer hardware company navigating the challenges of a competitive and dynamic market.
 
-The project involved writing SQL queries to uncover patterns in sales performance, product profitability, customer behavior, and regional market trends. Once the data was cleaned and aggregated, I brought it into Power BI to design an interactive dashboard that could provide a clear and concise view of key business metrics.
+In this project, I focused on writing SQL queries to identify patterns in sales performance, product profitability, customer behaviour, and regional market trends. Once I cleaned and organised the data, I used Power BI to build an interactive dashboard that offers a straightforward view of the key business metrics.
 
-This project helped me understand how data flows through different systems, how to formulate the right questions, and how to communicate data-driven insights visually. It also gave me hands-on experience in managing relational databases, performing join operations, and building visual stories from raw data.
+This project really opened my eyes to how data moves through various systems, how to ask the right questions, and how to present data-driven insights in a visually appealing way. I also got some hands-on experience with managing relational databases, executing join operations, and crafting visual narratives from raw data.
 
 ---
 
@@ -190,16 +190,72 @@ To set up the database on your local machine:
 
 In Power BI, I built a dashboard to visualize key sales metrics, market performance, product profitability, and customer trends.
 
-## ➕ Data Preparation in Power Query
+## 🔍 1. Key Insights
 
-To normalize currency values, I created a new column:
+This section focuses on high-level sales performance across markets and customer types (Brick & Mortar vs E-Commerce). It includes:
 
-```powerquery
-= Table.AddColumn(#"Filtered Rows", "norm_amount",
-each if [currency] = "USD" or [currency] = "USD#(cr)" then [sales_amount]*75 else [sales_amount], type any)
+- Total Revenue and Sales Quantity KPIs.
+- Revenue and Quantity by Market, segmented by customer type.
+- Revenue Trend over Time showing monthly revenue flow.
+- Top 5 Customers and Products by Revenue.
+
+📌 Custom Measures Created:
+
+```DAX
+Revenue = SUM('sales transactions'[norm_sales_amount])
+```
+```DAX
+Sales Qty = SUM('sales transactions'[sales_qty])
 ```
 
-This helped standardize all revenue figures to INR for accurate analysis.
+---
+
+## 💡 2. Profit Analysis
+
+This page dives into profit margins and contribution by market and customer.
+
+- Profit Margin % by Market
+- Revenue and Profit Contribution % by Market
+- Interactive Revenue Trend chart with detailed breakdowns.
+- Tabular view with Revenue Contribution, Profit Margin Contribution, and Profit Margin % for each customer.
+
+📌 Custom Measures Created:
+
+```DAX
+Total Profit Margin = SUM('sales transactions'[profit_margin])
+```
+```DAX
+Profit Margin % = DIVIDE([Total Profit Margin], [Revenue], 0)
+```
+```DAX
+Revenue Contribution = 
+DIVIDE([Revenue], 
+    CALCULATE([Revenue], ALL('sales customers'), ALL('sales products'), ALL('sales markets'))
+)
+```
+```DAX
+Profit Margin Contribution = 
+DIVIDE([Total Profit Margin], 
+    CALCULATE([Total Profit Margin], ALL('sales customers'), ALL('sales products'), ALL('sales markets'))
+)
+```
+
+---
+
+## 🚦 3. Performance Analysis
+
+This report highlights overall performance segmented by market zone, with drill-down functionality and dynamic visuals:
+
+- Revenue Contribution % by Market Zone, with colour-coded performance based on a profit margin target set using a slider.
+- Drill-down hierarchy: Zone → Market → Customer.
+- Revenue Trend with Year-over-Year Comparison, showing both revenue and profit margin % trends over time.
+- Interactive filters and cross-highlighting enabled for flexible analysis.
+
+📌 Custom Measure for YoY Comparison:
+
+```DAX
+Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
+```
 
 ---
 
@@ -207,7 +263,7 @@ This helped standardize all revenue figures to INR for accurate analysis.
 
 - Developed comprehensive SQL queries for slicing data across time, geography, and customer segments.
 
-- Designed insightful Power BI visualizations for business users to quickly identify performance trends.
+- Designed insightful Power BI visualisations for business users to quickly identify performance trends.
 
 - Gained hands-on experience in a real-world end-to-end data analysis workflow.
    
