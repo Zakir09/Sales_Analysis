@@ -17,6 +17,7 @@
 - [Setup Instructions](#setup-instructions)
 - [Key Takeaways](#key-takeaways)
 
+---
 
 <h2 id="project-overview">Project Overview</h2>
 
