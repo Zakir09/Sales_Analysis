@@ -1,6 +1,6 @@
 # 💼 Sales Insights Data Analysis Project
 
-## 📊 Project Overview
+<h2 id="project-overview">📊 Project Overview</h2>
 
 To boost my data analysis skills, I took on an end-to-end project where I explored the synergy between SQL and Power BI to uncover meaningful business insights. I selected a simulated dataset that reflects a computer hardware company navigating the challenges of a competitive and dynamic market.
 
@@ -33,15 +33,76 @@ The database consists of the following tables:
 
 ---
 
-## 🛠️ Setup Instructions
+## 📈 Power BI Dashboard
 
-To set up the database on your local machine:
+In Power BI, I built a dashboard to visualize key sales metrics, market performance, product profitability, and customer trends.
 
-1. Install MySQL:  
-   Follow the instructions in this [YouTube tutorial](https://www.youtube.com/watch?v=a3HJnbYhXUc&t=688s).
+## 🔍 1. Key Insights
 
-2. Import the database dump:  
-   Use the `sales_db.sql` file to restore the database using MySQL Workbench or command line.
+This section focuses on high-level sales performance across markets and customer types (Brick & Mortar vs E-Commerce). It includes:
+
+- Total Revenue and Sales Quantity KPIs.
+- Revenue and Quantity by Market, segmented by customer type.
+- Revenue Trend over Time showing monthly revenue flow.
+- Top 5 Customers and Products by Revenue.
+
+📌 Custom Measures Created:
+
+```DAX
+Revenue = SUM('sales transactions'[norm_sales_amount])
+```
+```DAX
+Sales Qty = SUM('sales transactions'[sales_qty])
+```
+
+---
+
+## 💡 2. Profit Analysis
+
+This page dives into profit margins and contribution by market and customer.
+
+- Profit Margin % by Market
+- Revenue and Profit Contribution % by Market
+- Interactive Revenue Trend chart with detailed breakdowns.
+- Tabular view with Revenue Contribution, Profit Margin Contribution, and Profit Margin % for each customer.
+
+📌 Custom Measures Created:
+
+```DAX
+Total Profit Margin = SUM('sales transactions'[profit_margin])
+```
+```DAX
+Profit Margin % = DIVIDE([Total Profit Margin], [Revenue], 0)
+```
+```DAX
+Revenue Contribution = 
+DIVIDE([Revenue], 
+    CALCULATE([Revenue], ALL('sales customers'), ALL('sales products'), ALL('sales markets'))
+)
+```
+```DAX
+Profit Margin Contribution = 
+DIVIDE([Total Profit Margin], 
+    CALCULATE([Total Profit Margin], ALL('sales customers'), ALL('sales products'), ALL('sales markets'))
+)
+```
+
+---
+
+## 🚦 3. Performance Analysis
+
+This report highlights overall performance segmented by market zone, with drill-down functionality and dynamic visuals:
+
+- Revenue Contribution % by Market Zone, with colour-coded performance based on a profit margin target set using a slider.
+- Drill-down hierarchy: Zone → Market → Customer.
+- Revenue Trend with Year-over-Year Comparison, showing both revenue and profit margin % trends over time.
+- Interactive filters and cross-highlighting enabled for flexible analysis.
+
+📌 Custom Measure for YoY Comparison:
+
+```DAX
+Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
+```
 
 ---
 
@@ -186,76 +247,15 @@ To set up the database on your local machine:
 
 ---
 
-## 📈 Power BI Dashboard
+## 🛠️ Setup Instructions
 
-In Power BI, I built a dashboard to visualize key sales metrics, market performance, product profitability, and customer trends.
+To set up the database on your local machine:
 
-## 🔍 1. Key Insights
+1. Install MySQL:  
+   Follow the instructions in this [YouTube tutorial](https://www.youtube.com/watch?v=a3HJnbYhXUc&t=688s).
 
-This section focuses on high-level sales performance across markets and customer types (Brick & Mortar vs E-Commerce). It includes:
-
-- Total Revenue and Sales Quantity KPIs.
-- Revenue and Quantity by Market, segmented by customer type.
-- Revenue Trend over Time showing monthly revenue flow.
-- Top 5 Customers and Products by Revenue.
-
-📌 Custom Measures Created:
-
-```DAX
-Revenue = SUM('sales transactions'[norm_sales_amount])
-```
-```DAX
-Sales Qty = SUM('sales transactions'[sales_qty])
-```
-
----
-
-## 💡 2. Profit Analysis
-
-This page dives into profit margins and contribution by market and customer.
-
-- Profit Margin % by Market
-- Revenue and Profit Contribution % by Market
-- Interactive Revenue Trend chart with detailed breakdowns.
-- Tabular view with Revenue Contribution, Profit Margin Contribution, and Profit Margin % for each customer.
-
-📌 Custom Measures Created:
-
-```DAX
-Total Profit Margin = SUM('sales transactions'[profit_margin])
-```
-```DAX
-Profit Margin % = DIVIDE([Total Profit Margin], [Revenue], 0)
-```
-```DAX
-Revenue Contribution = 
-DIVIDE([Revenue], 
-    CALCULATE([Revenue], ALL('sales customers'), ALL('sales products'), ALL('sales markets'))
-)
-```
-```DAX
-Profit Margin Contribution = 
-DIVIDE([Total Profit Margin], 
-    CALCULATE([Total Profit Margin], ALL('sales customers'), ALL('sales products'), ALL('sales markets'))
-)
-```
-
----
-
-## 🚦 3. Performance Analysis
-
-This report highlights overall performance segmented by market zone, with drill-down functionality and dynamic visuals:
-
-- Revenue Contribution % by Market Zone, with colour-coded performance based on a profit margin target set using a slider.
-- Drill-down hierarchy: Zone → Market → Customer.
-- Revenue Trend with Year-over-Year Comparison, showing both revenue and profit margin % trends over time.
-- Interactive filters and cross-highlighting enabled for flexible analysis.
-
-📌 Custom Measure for YoY Comparison:
-
-```DAX
-Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
-```
+2. Import the database dump:  
+   Use the `sales_db.sql` file to restore the database using MySQL Workbench or command line.
 
 ---
 
