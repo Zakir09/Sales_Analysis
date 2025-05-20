@@ -57,6 +57,8 @@ In Power BI, I built a dashboard to visualize key sales metrics, market performa
 
 <h3 id="key-insights">1. Key Insights</h3>
 
+<img src="assets/key_insights.png" alt="Key Insights Dashboard Screenshot" width="800"/>
+
 This section focuses on high-level sales performance across markets and customer types (Brick & Mortar vs E-Commerce). It includes:
 
 - Total Revenue and Sales Quantity KPIs.
@@ -76,6 +78,8 @@ Sales Qty = SUM('sales transactions'[sales_qty])
 ---
 
 <h3 id="profit-analysis">2. Profit Analysis</h3> 
+
+<img src="assets/profit_analysis.png" alt="Profit Analysis Dashboard Screenshot" width="800"/>
 
 This page dives into profit margins and contribution by market and customer.
 
@@ -108,6 +112,8 @@ DIVIDE([Total Profit Margin],
 ---
 
 <h3 id="performance-analysis">3. Performance Analysis</h3> 
+
+<img src="assets/performance_insights.png" alt="Performance Analysis Dashboard Screenshot" width="800"/>
 
 This report highlights overall performance segmented by market zone, with drill-down functionality and dynamic visuals:
 
