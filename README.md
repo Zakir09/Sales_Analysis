@@ -1,6 +1,24 @@
-# 💼 Sales Insights Data Analysis Project
+# Sales Insights Data Analysis Project
 
-<h2 id="project-overview">📊 Project Overview</h2>
+## 📚 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Tools Used](#tools-used)
+- [Dataset](#dataset)
+- [Power BI Dashboard](#power-bi-dashboard)
+  - [1. Key Insights](#key-insights)
+  - [2. Profit Analysis](#profit-analysis)
+  - [3. Performance Analysis](#performance-analysis)
+- [SQL Analysis](#sql-analysis)
+  - [1. Basic Insights](#basic-insights)
+  - [2. Sales and Revenue Analysis](#sales-and-revenue-analysis)
+  - [3. Join-Based Exploration](#join-based-exploration)
+  - [4. Advanced Exploration](#advanced-exploration)
+- [Setup Instructions](#setup-instructions)
+- [Key Takeaways](#key-takeaways)
+
+
+<h2 id="project-overview">Project Overview</h2>
 
 To boost my data analysis skills, I took on an end-to-end project where I explored the synergy between SQL and Power BI to uncover meaningful business insights. I selected a simulated dataset that reflects a computer hardware company navigating the challenges of a competitive and dynamic market.
 
@@ -10,7 +28,7 @@ This project really opened my eyes to how data moves through various systems, ho
 
 ---
 
-## 📌 Tools Used
+<h2 id="tools-used">Tools Used</h2>
 
 - MySQL
 - Power BI
@@ -19,7 +37,7 @@ This project really opened my eyes to how data moves through various systems, ho
 
 ---
 
-## 🗂️ Dataset
+<h2 id="dataset">Dataset</h2>
 
 The analysis is performed using a MySQL database file: [`sales_db.sql`](./sales_db.sql)
 
@@ -33,11 +51,11 @@ The database consists of the following tables:
 
 ---
 
-## 📈 Power BI Dashboard
+<h2 id="power-bi-dashboard">Power BI Dashboard</h2>
 
 In Power BI, I built a dashboard to visualize key sales metrics, market performance, product profitability, and customer trends.
 
-## 🔍 1. Key Insights
+<h3 id="key-insights">1. Key Insights</h3>
 
 This section focuses on high-level sales performance across markets and customer types (Brick & Mortar vs E-Commerce). It includes:
 
@@ -57,7 +75,7 @@ Sales Qty = SUM('sales transactions'[sales_qty])
 
 ---
 
-## 💡 2. Profit Analysis
+<h3 id="profit-analysis">2. Profit Analysis</h3> 
 
 This page dives into profit margins and contribution by market and customer.
 
@@ -89,7 +107,7 @@ DIVIDE([Total Profit Margin],
 
 ---
 
-## 🚦 3. Performance Analysis
+<h3 id="performance-analysis">3. Performance Analysis</h3> 
 
 This report highlights overall performance segmented by market zone, with drill-down functionality and dynamic visuals:
 
@@ -106,9 +124,9 @@ Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
 
 ---
 
-## 🧮 SQL Analysis
+<h2 id="sql-analysis">SQL Analysis</h2>
 
-### 🔹 Basic Insights
+<h3 id="basic-insights">1. Basic Insights</h3> 
 
 1. **Distinct market zones:**
    ```sql
@@ -131,7 +149,7 @@ Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
 
 ---
 
-### 🔹 Sales and Revenue Analysis
+<h3 id="sales-and-revenue-analysis">2. Sales and Revenue Analysis</h3> 
 
 1. **Total sales amount per year:**
    ```sql
@@ -177,7 +195,7 @@ Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
 
 ---
 
-### 🔹 Join-Based Exploration
+<h3 id="join-based-exploration">3. Join-Based Exploration</h3> 
 
 1. **Products sold in Delhi NCR with market zone:**
    ```sql
@@ -212,7 +230,7 @@ Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
 
 ---
 
-### 🔹 Advanced Exploration
+<h3 id="advanced-exploration">4. Advanced Exploration</h3> 
 
 1. **Market with highest average profit per transaction:**
    ```sql
@@ -247,7 +265,7 @@ Revenue LY = CALCULATE([Revenue], SAMEPERIODLASTYEAR('sales date'[Date]))
 
 ---
 
-## 🛠️ Setup Instructions
+<h2 id="setup-instructions">Setup Instructions</h2>
 
 To set up the database on your local machine:
 
@@ -259,7 +277,7 @@ To set up the database on your local machine:
 
 ---
 
-## ✅ Key Takeaways
+<h2 id="key-takeaways">Key Takeaways</h2>
 
 - Developed comprehensive SQL queries for slicing data across time, geography, and customer segments.
 
