@@ -31,10 +31,10 @@ This project really opened my eyes to how data moves through various systems, ho
 
 <h2 id="tools-used">Tools Used</h2>
 
-- MySQL
-- Power BI
-- SQL
-- Power Query
+- `MySQL`
+- `Power BI`
+- `SQL`
+- `Power Query`
 
 ---
 
